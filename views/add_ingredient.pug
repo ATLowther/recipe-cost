@@ -1,0 +1,26 @@
+extends layout
+
+block scripts
+	script(src="./jQuery/newIngredientClient.js")
+
+block content
+
+	
+	h1(class="text-center")=title
+
+	div(class='container')
+		form(method="post" role="form" id="newIngredients")
+			div(class="ingredients")
+				div(class="form-group row" id="Ingredient1")
+					div(class="col-5")
+						input(type="text" class="form-control" name="name" placeholder="Ingredient name" required)
+					div(class='col')
+						input(type="number" step="0.01" min-"0" name="quantity" class="form-control" placeholder="Quantity of ingredient" required)
+					div(class='col')
+						input(type="number" step="0.01" min='0' name="price" class="form-control" placeholder="Price per pound" required)
+					div(class='col-2')
+						button(type="button" class="btn btn-success" id="addRow")
+							img(src="./open-iconic/svg/plus.svg" alt="Add a new row")
+						button(type="button" class="btn btn-danger" id="deleteRow") 
+							img(src="./open-iconic/svg/minus.svg" alt="Get rid of this row")
+			input(type="submit" class="btn btn-info" id="submitIngredients" value="Submit Ingredients")

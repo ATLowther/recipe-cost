@@ -1,0 +1,38 @@
+extends layout
+
+block scripts
+	script(src="./jQuery/newRecipeClient.js")
+
+block content
+
+	
+	h1(class="text-center")=title
+
+
+	div(class='container')
+		if(ingredients.length)
+			form(method="post" role="form" id="newRecipe")
+				div(class="form-group row" id="allIngredients")
+					select(class="custom-select col-6 mx-auto" id="selectIngredients")
+						option(value="0" disabled selected) Select an ingredient
+						each ingredient in ingredients
+							option(value= ingredient.name price= ingredient.price) #{ingredient.name}
+				div(class="costs")
+					div(class="recipeIngredients")
+					div(class="form-group row totalCost")
+						label(for="fullCost" class="col-form-label col-2")
+							|Total Cost
+						div(class='col-4')
+							input(type='text' class="form-control" id="fullCost" placeholder="Total cost for recipe" disabled)
+					div(class="form-group row totalYield")
+						label(for="count" class="col-form-label col-2")
+							|Total Yield
+						div(class='col-4')
+							input(type='number' class="form-control" id="count" placeholder="Total yield for recipe")
+					div(class="form-group row costEach")
+						label(for="cost" class="col-form-label col-2")
+							|Cost per item
+						div(class='col-4')
+							input(type='text' class="form-control" id="cost" placeholder="Cost per item" disabled)
+		else
+			| No Ingredients
